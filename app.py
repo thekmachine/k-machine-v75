@@ -4,15 +4,15 @@ from datetime import datetime
 
 st.set_page_config(page_title="K Machine", layout="wide", page_icon="⚾")
 
-# Premium green + modern styling from your first version
+# Fluorescent green + fancy cards from your first version
 st.markdown("""
 <style>
     .main {background-color: #0f172a; color: #f1f5f9;}
-    h1 {color: #22c55e; font-size: 4.2rem; text-align: center; margin-bottom: 10px; text-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);}
-    .hero {text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #1e2937, #0f172a); border-radius: 28px; margin-bottom: 30px; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4);}
-    .prop-card {background: #1e2937; padding: 28px; border-radius: 24px; margin-bottom: 24px; box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.4); transition: all 0.3s;}
-    .prop-card:hover {transform: translateY(-6px); box-shadow: 0 25px 30px -5px rgb(34, 197, 94, 0.3);}
-    .high-conf {color: #22c55e; font-weight: bold; font-size: 1.6rem;}
+    h1 {color: #22c55e; font-size: 4.5rem; text-align: center; margin-bottom: 10px; text-shadow: 0 4px 20px rgba(34, 197, 94, 0.6);}
+    .hero-box {text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #1e2937, #0f172a); border-radius: 30px; margin-bottom: 30px; box-shadow: 0 20px 30px -5px rgb(34, 197, 94, 0.4);}
+    .prop-card {background: #1e2937; padding: 28px; border-radius: 24px; margin-bottom: 24px; box-shadow: 0 15px 30px -5px rgb(34, 197, 94, 0.3); transition: all 0.3s;}
+    .prop-card:hover {transform: translateY(-8px); box-shadow: 0 25px 40px -5px rgb(34, 197, 94, 0.5);}
+    .high-conf {color: #22c55e; font-weight: bold; font-size: 1.7rem;}
     .disclaimer {color: #eab308; font-weight: 700; text-align: center; padding: 18px; background: #1e2937; border-radius: 16px; margin-bottom: 25px;}
     .lineup-status {color: #22c55e; font-weight: 600;}
 </style>
@@ -21,7 +21,8 @@ st.markdown("""
 if 'tracked_picks' not in st.session_state:
     st.session_state.tracked_picks = []
 
-st.markdown('<div class="hero"><h1>K Machine</h1><p style="font-size:1.9rem;margin:0;color:#a3e635;">Real-Time Player Prop Machine • MLB Strikeouts • NFL • NHL • NBA</p></div>', unsafe_allow_html=True)
+# HERO BOX FROM FIRST VERSION
+st.markdown('<div class="hero-box"><h1>K Machine</h1><p style="font-size:1.9rem;margin:0;color:#a3e635;">Real-Time Player Prop Machine • MLB Strikeouts • NFL • NHL • NBA</p></div>', unsafe_allow_html=True)
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏠 Home", "⚾ MLB Strikeouts", "🏈 NFL Props", "🏒 NHL Props", "🏀 NBA Props"])
 
@@ -75,15 +76,15 @@ with tab2:
             st.markdown(f'<div class="trend-note" style="font-size:0.95rem;color:#a3e635;">Key Trends: {row["Reasoning"]}</div>', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
-    # TOMORROW'S PROJECTED
+    # TOMORROW'S PROJECTED (using upcoming games & starters)
     st.subheader("📅 Tomorrow’s Projected Pitchers (June 11)")
-    st.caption("Based on current projected rotations and lineups")
+    st.caption("Based on upcoming games and projected rotations")
     tomorrow_data = {
         "Pitcher": ["Jack Perkins", "Tarik Skubal", "Zack Wheeler", "Corbin Burnes", "Logan Gilbert"],
         "Team": ["MIL vs COL", "DET vs TBD", "PHI vs TBD", "BAL vs TBD", "SEA vs TBD"],
         "Prop": ["Over 5.5 Ks", "Over 6.5 Ks", "Over 7.5 Ks", "Over 6.5 Ks", "Over 6.5 Ks"],
         "Confidence": [88, 92, 91, 90, 89],
-        "Reasoning": ["Projected vs COL — favorable park", "Projected strong home start", "Projected vs weak offense", "Projected favorable matchup", "Projected consistent overs"],
+        "Reasoning": ["vs COL — favorable park", "Projected strong home start", "Projected vs weak offense", "Projected favorable matchup", "Projected consistent overs"],
         "Lineup": ["Projected", "Projected", "Projected", "Projected", "Projected"],
         "Source": ["https://www.mlb.com/probable-pitchers", "https://www.mlb.com/probable-pitchers", "https://www.mlb.com/probable-pitchers", "https://www.mlb.com/probable-pitchers", "https://www.mlb.com/probable-pitchers"]
     }
